@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modification d'un produit</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h2>Formulaire de modification de produit</h2>
+    <form th:action="@{/produit/edit}" th:object="${unProduit}" method="post">
+        <div class="mb-3">
+            <input type="number" th:field="*{id}" class="form-control" name="id" hidden>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Libelle</label>
+            <input type="text" th:field="*{libelle}" class="form-control" placeholder="Libelle du produit" name="libelle">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Quantité seuil</label>
+            <input type="number" th:field="*{qteSeuil}" class="form-control" placeholder="Quantité du produit" name="qteSeuil">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Prix</label>
+            <input type="number" th:field="*{prix}" class="form-control" placeholder="Libelle du produit" name="prix">
+        </div>
+        <button type="submit" class="btn btn-primary">Modifier</button>
+    </form>
+</div>
+<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

@@ -16,7 +16,6 @@ public class Produit {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
     private String libelle;
     private int qteStock;
     private int qteSeuil;

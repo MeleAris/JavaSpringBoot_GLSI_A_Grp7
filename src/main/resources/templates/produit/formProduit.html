@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajout d'un produit</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2>Formulaire de saisie de produit</h2>
+        <form th:action="@{/produit/save}" method="post">
+            <div class="mb-3">
+                <label class="form-label">Libelle</label>
+                <input type="text" class="form-control" placeholder="Libelle du produit" name="libelle">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Quantité seuil</label>
+                <input type="number" class="form-control" placeholder="Quantité du produit" name="qteSeuil">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Prix</label>
+                <input type="number" class="form-control" placeholder="Libelle du produit" name="prix">
+            </div>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </form>
+    </div>
+    <script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

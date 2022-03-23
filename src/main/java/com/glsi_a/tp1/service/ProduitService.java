@@ -43,6 +43,12 @@ public class ProduitService {
     //Supprimer un produit
     public void deleteProduit(int id)
     {
-        produitRepository.deleteById(id);
+        if (produitRepository.findById(id).isPresent())
+        {
+            produitRepository.deleteById(id);
+        }
+        else {
+            throw new RuntimeException("Impossible de supprimer cet élément");
+        }
     }
 }

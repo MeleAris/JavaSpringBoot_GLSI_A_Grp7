@@ -21,4 +21,9 @@ public class Produit {
     private int qteSeuil;
     private double prix;
     private LocalDate dateCreation;
+
+    @ManyToOne
+    @JoinColumn(name = "categoryId", nullable = false, insertable = false, updatable = false)
+    private Category category;
+    private int categoryId;
 }

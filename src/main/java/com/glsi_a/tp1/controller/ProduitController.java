@@ -1,14 +1,12 @@
 package com.glsi_a.tp1.controller;
 
 import com.glsi_a.tp1.models.Produit;
+import com.glsi_a.tp1.service.CategoryService;
 import com.glsi_a.tp1.service.ProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
@@ -18,6 +16,9 @@ public class ProduitController {
     @Autowired
     private ProduitService produitService;
 
+    @Autowired
+    private CategoryService categoryService;
+
     @GetMapping("/show")
     public String afficherProduit(Model model)
     {
@@ -26,8 +27,9 @@ public class ProduitController {
     }
 
     @GetMapping("/create")
-    public String afficherFormulaire()
+    public String afficherFormulaire(Model model)
     {
+        model.addAttribute("listCategories", categoryService.showAllCategory());
         return "produit/formProduit";
     }
 
@@ -45,5 +47,19 @@ public class ProduitController {
     {
         model.addAttribute("unProduit", produitService.selectedProduit(id));
         return "produit/formEditProduit";
+    }
+
+    @PostMapping("/edit")
+    public String editProduit(@ModelAttribute("unProduit") Produit produit)
+    {
+        produitService.saveProduit(produit);
+        return "redirect:/produit/show";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteProduit(@PathVariable("id") int id)
+    {
+        produitService.deleteProduit(id);
+        return "redirect:/produit/show";
     }
 }

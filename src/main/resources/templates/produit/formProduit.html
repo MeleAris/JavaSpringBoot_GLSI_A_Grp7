@@ -9,6 +9,16 @@
     <div class="container">
         <h2>Formulaire de saisie de produit</h2>
         <form th:action="@{/produit/save}" method="post">
+            <div>
+                <label class="form-label">Categorie</label>
+                <select name="categrory_id" required>
+                    <option value="">--Sélectionner une catégorie</option>
+                    <option th:each="category:${listCategories}"
+                            th:value="${category.id}"
+                            th:text="${categroy.designation}">
+                    </option>
+                </select>
+            </div>
             <div class="mb-3">
                 <label class="form-label">Libelle</label>
                 <input type="text" class="form-control" placeholder="Libelle du produit" name="libelle">

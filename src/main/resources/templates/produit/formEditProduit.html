@@ -24,6 +24,10 @@
             <label class="form-label">Prix</label>
             <input type="number" th:field="*{prix}" class="form-control" placeholder="Libelle du produit" name="prix">
         </div>
+        <div class="mb-3">
+            <input type="hidden" th:field="*{dateCreation}" class="form-control" hidden>
+            <input type="hidden" th:field="*{qteStock}" class="form-control" hidden>
+        </div>
         <button type="submit" class="btn btn-primary">Modifier</button>
     </form>
 </div>

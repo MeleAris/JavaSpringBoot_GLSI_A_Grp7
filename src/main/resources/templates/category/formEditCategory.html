@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modification d'une catégorie</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h2>Formulaire de modification de catégorie</h2>
+    <form th:action="@{/category/edit}" th:object="${uneCategory}" method="post">
+        <div class="mb-3">
+            <input type="number" th:field="*{id}" class="form-control" name="id" hidden>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Libelle</label>
+            <input type="text" th:field="*{designation}" class="form-control" placeholder="Designation d'une catégorie" name="designation">
+        </div>
+        <button type="submit" class="btn btn-primary">Modifier</button>
+    </form>
+</div>
+<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

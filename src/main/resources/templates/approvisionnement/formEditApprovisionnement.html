@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modification d'un approvisionnement</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h2>Formulaire de modification d'un approvisionnement</h2>
+    <form th:action="@{/approvisionnement/edit}" th:object="${unApp}" method="post">
+        <div class="mb-3">
+            <input type="number" th:field="*{id}" class="form-control" name="id" hidden>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Libelle</label>
+            <input type="text" th:field="*{quantite}" class="form-control" name="quantite">
+        </div>
+        <div class="mb-3">
+            <input type="hidden" th:field="*{dateApp}" class="form-control" hidden>
+        </div>
+        <button type="submit" class="btn btn-primary">Modifier</button>
+    </form>
+</div>
+<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

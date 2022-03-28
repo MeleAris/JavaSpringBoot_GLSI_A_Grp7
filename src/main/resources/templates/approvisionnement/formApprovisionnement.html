@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajout d'un approvisionnement</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2>Formulaire de saisie de produit</h2>
+        <form th:action="@{/approvisionnement/save}" method="post">
+            <div>
+                <label class="form-label">Produit</label>
+                <select name="approId" required>
+                    <option value="">--Sélectionner un produit</option>
+                    <option th:each="produit:${listProduit}"
+                            th:value="${produit.id}"
+                            th:text="${produit.libelle}">
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Quantité</label>
+                <input type="number" class="form-control" placeholder="Quantité" name="quantite">
+            </div>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </form>
+    </div>
+    <script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

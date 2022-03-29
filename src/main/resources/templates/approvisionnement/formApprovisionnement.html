@@ -6,6 +6,36 @@
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/home}">
+            <h4>
+                <strong>
+                    Gestion
+                </strong>
+            </h4>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link"th:href="@{/home}">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/category/show}">Catégories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/produit/show}">Produits</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page"  th:href="@{/approvisionnement/show}">Approvisionnements</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
     <div class="container">
         <h2>Formulaire de saisie de produit</h2>
         <form th:action="@{/approvisionnement/save}" method="post">

@@ -56,10 +56,17 @@ public class ProduitController {
         return "redirect:/produit/show";
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteProduit(@PathVariable("id") int id)
+    @GetMapping("/conf/{id}")
+    public String deleteConf(@PathVariable("id") int id, Model model)
     {
-        produitService.deleteProduit(id);
+        model.addAttribute("leProduit", produitService.selectedProduit(id));
+        return "produit/deleteProduit";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deleteProduit(@ModelAttribute("leProduit") Produit produit)
+    {
+        produitService.deleteProduit(produit.getId());
         return "redirect:/produit/show";
     }
 }

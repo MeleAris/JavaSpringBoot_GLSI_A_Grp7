@@ -63,7 +63,7 @@
                 <td th:text="${produit.category.designation}"></td>
                 <td>
                     <a th:href="@{/produit/edit/{id}(id=${produit.id})}" class="btn btn-warning">Edit</a>
-                    <a th:href="@{/produit/delete/{id}(id=${produit.id})}" class="btn btn-danger">Delete</a>
+                    <a th:href="@{/produit/conf/{id}(id=${produit.id})}" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
             </tbody>

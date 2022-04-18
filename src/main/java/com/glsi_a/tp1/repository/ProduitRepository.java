@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public interface ProduitRepository extends JpaRepository<Produit, Integer > {
@@ -16,4 +17,10 @@ public interface ProduitRepository extends JpaRepository<Produit, Integer > {
     @Query(value = "UPDATE produits set qte_stock = qte_stock + :q where id = :i", nativeQuery = true)
     @Transactional
     void majProduit(@Param("i") int id,@Param("q") int quantite);
+
+    @Query(value = "select p from Produit p where p.qteStock > 0")
+    List<Produit> selectProduit();
+
+    @Query(value = "select p from Produit p where p.libelle like %:n%")
+    List<Produit> findProduit(@Param("n") String nom);
 }

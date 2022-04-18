@@ -69,4 +69,18 @@ public class ProduitController {
         produitService.deleteProduit(produit.getId());
         return "redirect:/produit/show";
     }
+
+    @GetMapping("/showqte")
+    public String afficherProduitqte(Model model)
+    {
+        model.addAttribute("listProduit", produitService.listProduit());
+        return "produit/showProduct";
+    }
+
+    @PostMapping("/fshow")
+    public String afficherProduitfind(@ModelAttribute("nom") String nom, Model model)
+    {
+        model.addAttribute("listProduit", produitService.fProduit(nom));
+        return "produit/showProduct";
+    }
 }

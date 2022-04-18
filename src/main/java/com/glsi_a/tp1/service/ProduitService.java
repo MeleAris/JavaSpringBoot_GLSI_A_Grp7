@@ -58,4 +58,8 @@ public class ProduitService {
     {
         produitRepository.majProduit(id, quantite);
     }
+
+    public List<Produit> listProduit(){ return produitRepository.selectProduit();}
+
+    public List<Produit> fProduit(String nom){ return produitRepository.findProduit(nom);}
 }

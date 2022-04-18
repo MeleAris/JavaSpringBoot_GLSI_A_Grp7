@@ -5,10 +5,12 @@ import com.glsi_a.tp1.repository.ProduitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class ProduitService {
     @Autowired
     private ProduitRepository produitRepository;
@@ -50,5 +52,10 @@ public class ProduitService {
         else {
             throw new RuntimeException("Impossible de supprimer cet élément");
         }
+    }
+
+    public void majQteProduit(int id, int quantite)
+    {
+        produitRepository.majProduit(id, quantite);
     }
 }

@@ -50,14 +50,14 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each = "app:${unApp}">
+            <tr th:each = "app:${listApp}">
                 <th scope="row" th:text="${app.id}"></th>
-                <td th:text="${app.libelle}"></td>
+                <td th:text="${app.quantite}"></td>
                 <td th:text="${app.dateApp}"></td>
                 <td th:text="${app.produit.libelle}"></td>
                 <td>
-                    <a th:href="@{/produit/edit/{id}(id=${app.id})}" class="btn btn-warning">Edit</a>
-                    <a th:href="@{/produit/delete/{id}(id=${app.id})}" class="btn btn-danger">Delete</a>
+                    <a th:href="@{/approvisionnement/edit/{id}(id=${app.id})}" class="btn btn-warning">Edit</a>
+                    <a th:href="@{/approvisionnement/delete/{id}(id=${app.id})}" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
             </tbody>

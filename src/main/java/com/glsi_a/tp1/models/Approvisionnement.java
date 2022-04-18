@@ -13,13 +13,13 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Approvisionnement {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int quantite;
     private LocalDate dateApp;
 
     @ManyToOne
-    @JoinColumn(name = "approId", nullable = false, insertable = false, updatable = false)
-    private Approvisionnement approvisionnement;
-    private int approId;
+    @JoinColumn(name = "produitId", nullable = false, insertable = false, updatable = false)
+    private Produit produit;
+    private int produitId;
 }

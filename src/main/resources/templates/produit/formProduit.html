@@ -41,11 +41,11 @@
         <form th:action="@{/produit/save}" method="post">
             <div>
                 <label class="form-label">Categorie</label>
-                <select name="categrory_id" required>
+                <select name="categoryId" required>
                     <option value="">Sélectionner une catégorie</option>
                     <option th:each="category:${listCategories}"
                             th:value="${category.id}"
-                            th:text="${categroy.designation}">
+                            th:text="${category.designation}">
                     </option>
                 </select>
             </div>

@@ -41,8 +41,8 @@
         <form th:action="@{/approvisionnement/save}" method="post">
             <div>
                 <label class="form-label">Produit</label>
-                <select name="approId" required>
-                    <option value="">--Sélectionner un produit</option>
+                <select name="produitId" required>
+                    <option value="">Sélectionner un produit</option>
                     <option th:each="produit:${listProduit}"
                             th:value="${produit.id}"
                             th:text="${produit.libelle}">

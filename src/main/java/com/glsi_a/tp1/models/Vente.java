@@ -16,7 +16,7 @@ public class Vente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int quantite;
-    private double prix;
+    private double prixTotal;
     private LocalDate dateVente;
 
     @ManyToOne

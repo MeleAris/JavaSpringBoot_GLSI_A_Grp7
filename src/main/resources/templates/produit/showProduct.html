@@ -13,10 +13,10 @@
             <h2>Liste des produits</h2>
             <div class="row">
                 <div class="col-3">
-                    <a th:href="@{/produit/create/}" class="btn btn-warning ">Créer un nouveau produit</a>
+                    <a th:href="@{/produit/create/}" class="btn btn-outline-success">Créer un nouveau produit</a>
                 </div>
                 <div class="col-3">
-                    <a th:href="@{/produit/show/}" class="btn btn-secondary ">Tous les produits</a>
+                    <a th:href="@{/produit/show/}" class="btn btn-outline-secondary ">Tous les produits</a>
                 </div>
                 <div  class="col-6">
                     <form th:action="@{/produit/fshow}" method="post">
@@ -48,8 +48,8 @@
                         <td th:text="${produit.dateCreation}"></td>
                         <td th:text="${produit.category.designation}"></td>
                         <td>
-                            <a th:href="@{/produit/edit/{id}(id=${produit.id})}" class="btn btn-warning">Edit</a>
-                            <a th:href="@{/produit/conf/{id}(id=${produit.id})}" class="btn btn-danger">Delete</a>
+                            <a th:href="@{/produit/edit/{id}(id=${produit.id})}" class="btn btn-outline-warning">Edit</a>
+                            <a th:href="@{/produit/conf/{id}(id=${produit.id})}" class="btn btn-outline-danger">Delete</a>
                         </td>
                     </tr>
                     </tbody>

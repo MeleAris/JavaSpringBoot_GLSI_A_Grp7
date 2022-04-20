@@ -24,14 +24,14 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each = "app:${listApp}">
+            <tr th:each = "app:${listVente}">
                 <th scope="row" th:text="${app.id}"></th>
                 <td th:text="${app.quantite}"></td>
                 <td th:text="${app.dateVente}"></td>
                 <td th:text="${app.produit.libelle}"></td>
                 <td>
-                    <a th:href="@{/vente/edit/{id}(id=${app.id})}" class="btn btn-outline-dark mb-2">Edit</a>
-                    <a th:href="@{/vente/delete/{id}(id=${app.id})}" class="btn btn-outline-info mb-2">Delete</a>
+                    <a th:href="@{/vente/edit/{id}(id=${app.id})}" class="btn btn-outline-warning mb-2">Edit</a>
+                    <a th:href="@{/vente/delete/{id}(id=${app.id})}" class="btn btn-outline-danger mb-2">Delete</a>
                 </td>
             </tr>
             </tbody>

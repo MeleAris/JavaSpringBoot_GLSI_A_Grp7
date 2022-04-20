@@ -19,8 +19,17 @@ public interface ProduitRepository extends JpaRepository<Produit, Integer > {
     void majProduit(@Param("i") int id,@Param("q") int quantite);
 
     @Query(value = "select p from Produit p where p.qteStock > 0")
-    List<Produit> selectProduit();
+    List<Produit> listStockProduit();
 
     @Query(value = "select p from Produit p where p.libelle like %:n%")
     List<Produit> findProduit(@Param("n") String nom);
+
+    @Query(value = "select count(p) from Produit p where p.qteStock > 0")
+    long countProduit();
+
+    @Query(value = "select count(p) from Produit p where p.qteStock <= p.qteSeuil")
+    long countRuptureProduit();
+
+    @Query(value = "select p from Produit p where p.qteStock <= p.qteSeuil")
+    List<Produit> listRuptureProduit();
 }

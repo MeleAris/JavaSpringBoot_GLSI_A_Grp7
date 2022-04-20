@@ -28,8 +28,7 @@ public class ProduitService {
     }
 
     //Selection d'un seul produit
-    public Produit selectedProduit(int id)
-    {
+    public Produit selectedProduit(int id) {
         Optional<Produit> optional = produitRepository.findById(id);
         Produit produit = null;
         if (optional.isPresent())
@@ -43,8 +42,7 @@ public class ProduitService {
     }
 
     //Supprimer un produit
-    public void deleteProduit(int id)
-    {
+    public void deleteProduit(int id) {
         if (produitRepository.findById(id).isPresent())
         {
             produitRepository.deleteById(id);
@@ -54,12 +52,27 @@ public class ProduitService {
         }
     }
 
+    //Mise à jour quantite d'un produit après approvisionnement
     public void majQteProduit(int id, int quantite)
     {
         produitRepository.majProduit(id, quantite);
     }
 
-    public List<Produit> listProduit(){ return produitRepository.selectProduit();}
+    //Liste des produits en stock
+    public List<Produit> listProduit(){ return produitRepository.listStockProduit();}
 
+    //Recherche d'un produit à partir de son nom
     public List<Produit> fProduit(String nom){ return produitRepository.findProduit(nom);}
+
+    //Compter tous les produits
+    public long countAllProduit(){ return produitRepository.count();}
+
+    //Compter produits en stock
+    public long countProduit(){ return produitRepository.countProduit();}
+
+    //Compter produits en rupture de stock
+    public long countProduitRupture(){ return produitRepository.countRuptureProduit();}
+
+    //Liste des produits en rupture de stock
+    public List<Produit> listRuptureProduit(){ return produitRepository.listRuptureProduit();}
 }

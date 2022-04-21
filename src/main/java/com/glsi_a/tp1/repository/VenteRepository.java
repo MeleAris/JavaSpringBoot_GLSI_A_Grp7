@@ -12,8 +12,8 @@ import javax.transaction.Transactional;
 @Repository
 public interface VenteRepository extends JpaRepository<Vente, Integer > {
 
-    @Query(value = "select sum (pv.quantite * p.prix) from ProduitVente pv JOIN Produit p on pv.produit.id = p.id " +
-            "join Vente v on v.id = pv.vente.id where v.id = :i")
+    @Query(value = "select sum(pv.quantite * p.prix) from Produit_Vente pv JOIN Produits p on pv.produit_id = p.id " +
+            "join Vente v on v.id = pv.vente_id where v.id = :i", nativeQuery = true)
     double montantVente(@Param("i") int idv);
 
     @Modifying

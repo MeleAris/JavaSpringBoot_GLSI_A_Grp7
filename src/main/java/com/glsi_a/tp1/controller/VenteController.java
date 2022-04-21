@@ -81,7 +81,7 @@ public class VenteController {
         pv.setQuantite(qte);
 
         pv.setVente(venteService.selectedVente(vid));
-        venteService.montantVente(pv.getVente().getId());
+        venteService.majmontantVente(pv.getVente().getId());
         service.save(pv);
         produitService.majQteProduitVente(pv.getProduit().getId(), pv.getQuantite());
         return "redirect:/vente/show";

@@ -51,5 +51,11 @@ public class VenteService {
             throw new RuntimeException("Impossible de supprimer cet élément");
         }
     }
+
+    //Compter produits en rupture de stock
+    public double montantVente(int idv){ return venteRepository.montantVente(idv);}
+
+    //Compter produits en rupture de stock
+    public void majmontantVente(int idv){ venteRepository.majmontantVente(idv, montantVente(idv));}
 }
 

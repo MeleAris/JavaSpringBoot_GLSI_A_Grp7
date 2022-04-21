@@ -12,15 +12,15 @@ import javax.persistence.*;
 @Data
 public class ProduitVente {
     @EmbeddedId
-    ProduitVenteKey id;
+    ProduitVenteKey id = new ProduitVenteKey();
 
     @ManyToOne
-    @MapsId("produit_id")
+    @MapsId("produitId")
     @JoinColumn(name = "produit_id")
     Produit produit;
 
     @ManyToOne
-    @MapsId("vente_id")
+    @MapsId("venteId")
     @JoinColumn(name = "vente_id")
     Vente vente;
 

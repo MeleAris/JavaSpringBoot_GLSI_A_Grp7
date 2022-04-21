@@ -1,6 +1,8 @@
 package com.glsi_a.tp1.controller;
 
+import com.glsi_a.tp1.models.ProduitVente;
 import com.glsi_a.tp1.models.Vente;
+import com.glsi_a.tp1.service.ProduitVenteService;
 import com.glsi_a.tp1.service.VenteService;
 import com.glsi_a.tp1.service.ProduitService;
 import com.glsi_a.tp1.service.VenteService;
@@ -14,11 +16,14 @@ import java.time.LocalDate;
 @Controller
 @RequestMapping("/vente")
 public class VenteController {
+
+    private static int vid;
     @Autowired
     private ProduitService produitService;
-
     @Autowired
     private VenteService venteService;
+    @Autowired
+    private ProduitVenteService service;
 
     @GetMapping("/show")
     public String afficherVente(Model model)
@@ -30,16 +35,75 @@ public class VenteController {
     @GetMapping("/create")
     public String afficherFormulaire(Model model)
     {
-        model.addAttribute("listProduit", produitService.showAllProduit());
+        model.addAttribute("listProduit", produitService.listProduit());
         return "vente/formVente";
     }
 
-    @PostMapping("/save")
-    public String save(Vente vente)
+    @GetMapping("/created")
+    public String affFormulaire(Model model)
     {
+        model.addAttribute("listProduit", produitService.listProduit());
+        return "vente/formVenteContinuer";
+    }
+
+    //Action quand on va cliquer la première fois sur continuer >>
+    @PostMapping("/save")
+    public String save(ProduitVente pv)
+    {
+        Vente vente = new Vente();
         vente.setDateVente(LocalDate.now());
+        vente.setPrixTotal(0);
         venteService.saveVente(vente);
-        //produitService.majQteProduitVente(vente.getProduitId(), vente.getQuantite());
+
+        vid = vente.getId();
+        pv.setVente(vente);
+        service.save(pv);
+        produitService.majQteProduitVente(pv.getProduit().getId(), pv.getQuantite());
+        return "redirect:/vente/created";
+    }
+
+    //Action quand on clique sur continuer apres le first continuer
+    @PostMapping("/savef")
+    public String savefinal(ProduitVente pv)
+    {
+        pv.setVente(venteService.selectedVente(vid));
+        service.save(pv);
+        produitService.majQteProduitVente(pv.getProduit().getId(), pv.getQuantite());
+        return "redirect:/vente/created";
+    }
+
+    //Clique sur terminer apres continuer
+    @GetMapping("/saveft/{id}/{qte}")
+    public String saveft(@PathVariable("id") int id, @PathVariable("qte") int qte)
+    {
+        ProduitVente pv = new ProduitVente();
+        pv.setProduit(produitService.selectedProduit(id));
+        pv.setQuantite(qte);
+
+        pv.setVente(venteService.selectedVente(vid));
+        venteService.montantVente(pv.getVente().getId());
+        service.save(pv);
+        produitService.majQteProduitVente(pv.getProduit().getId(), pv.getQuantite());
+        return "redirect:/vente/show";
+    }
+
+    //Clique direct sur terminer
+    @GetMapping("/savet/{id}/{qte}")
+    public String saveterm(@PathVariable("id") int id, @PathVariable("qte") int qte)
+    {
+        ProduitVente pv = new ProduitVente();
+        pv.setProduit(produitService.selectedProduit(id));
+        pv.setQuantite(qte);
+
+        Vente vente = new Vente();
+        vente.setDateVente(LocalDate.now());
+        vente.setPrixTotal(venteService.montantVente(vente.getId()));
+        venteService.saveVente(vente);
+
+        vid = vente.getId();
+        pv.setVente(vente);
+        service.save(pv);
+        produitService.majQteProduitVente(pv.getProduit().getId(), pv.getQuantite());
         return "redirect:/vente/show";
     }
 

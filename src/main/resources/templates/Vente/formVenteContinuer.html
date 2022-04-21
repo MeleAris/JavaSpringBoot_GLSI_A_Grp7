@@ -11,7 +11,7 @@
 <div class="row">
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <h2><strong>Formulaire de saisie de la vente</strong></h2>
-        <form th:action="@{/vente/save}" method="post">
+        <form th:action="@{/vente/savef}" method="post">
             <div>
                 <label class="form-label">Article</label>
                 <select name="produit" required>
@@ -28,7 +28,7 @@
             </div>
             <button type="submit" class="btn btn-outline-secondary mb-2">Continuer</button>
         </form>
-        <a th:href="@{/vente/savet/{id}/{qte} (id=${produit.id}, qte=${quantite})}" class="btn btn-outline-primary mb-2">Terminer</a>
+        <a th:href="@{/vente/saveft/{id}/{qte}(id=${produit.id}, qte=${quantite})}" class="btn btn-outline-primary mb-2">Terminer</a>
     </main>
 </div>
 

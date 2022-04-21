@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "produits")
@@ -26,4 +27,7 @@ public class Produit {
     @JoinColumn(name = "categoryId", nullable = false, insertable = false, updatable = false)
     private Category category;
     private int categoryId;
+
+    @OneToMany(mappedBy = "produit")
+    List<ProduitVente> produitVentes;
 }

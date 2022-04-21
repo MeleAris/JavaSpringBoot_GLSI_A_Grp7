@@ -75,4 +75,10 @@ public class ProduitService {
 
     //Liste des produits en rupture de stock
     public List<Produit> listRuptureProduit(){ return produitRepository.listRuptureProduit();}
+
+    //Mise à jour quantite d'un produit après vente
+    public void majQteProduitVente(int id, int quantite)
+    {
+        produitRepository.majProduitVente(id, quantite);
+    }
 }

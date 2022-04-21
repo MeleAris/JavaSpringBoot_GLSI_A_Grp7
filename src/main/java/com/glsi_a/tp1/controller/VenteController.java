@@ -39,7 +39,7 @@ public class VenteController {
     {
         vente.setDateVente(LocalDate.now());
         venteService.saveVente(vente);
-        produitService.majQteProduit(vente.getProduitId(), vente.getQuantite());
+        //produitService.majQteProduitVente(vente.getProduitId(), vente.getQuantite());
         return "redirect:/vente/show";
     }
 

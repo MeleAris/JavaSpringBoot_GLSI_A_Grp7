@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -15,13 +17,9 @@ public class Vente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int quantite;
     private double prixTotal;
     private LocalDate dateVente;
 
-    @ManyToOne
-    @JoinColumn(name = "produitId", nullable = false, insertable = false, updatable = false)
-    private Produit produit;
-    private int produitId;
+    @OneToMany(mappedBy = "vente")
+    List<ProduitVente> produitVentes;
 }
-

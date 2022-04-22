@@ -25,11 +25,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.antMatcher("/secure/**").authorizeRequests().anyRequest().fullyAuthenticated().and().httpBasic();
-        /*http
+        http
                 .authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
-                .httpBasic();*/
+                .httpBasic();
     }
     @Bean
     PasswordEncoder passwordEncoder(){

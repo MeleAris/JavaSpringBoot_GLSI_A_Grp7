@@ -4,8 +4,6 @@
     <head th:replace="fragments::html_head(type='none')"/>
 
     <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
 <body>
     <div th:replace="fragments::header"/>
@@ -100,7 +98,8 @@
                     text: 'Details'
                 },
                 xAxis: {
-                    categories: [[${mois}]],
+                    labels: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+                        "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
                     crosshair: true
                 },
                 yAxis: {

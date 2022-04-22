@@ -1,5 +1,6 @@
 package com.glsi_a.tp1.controller;
 
+import com.glsi_a.tp1.models.Counter;
 import com.glsi_a.tp1.models.ProduitVente;
 import com.glsi_a.tp1.models.Vente;
 import com.glsi_a.tp1.service.ProduitVenteService;
@@ -28,7 +29,8 @@ public class VenteController {
     @GetMapping("/show")
     public String afficherVente(Model model)
     {
-        model.addAttribute("listVente", venteService.showAllVente());
+        model.addAttribute("listVente", venteService.showAllVente());;
+        model.addAttribute("i", new Counter());
         return "vente/showVente";
     }
 

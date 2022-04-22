@@ -23,9 +23,9 @@
                 <th scope="col"></th>
             </tr>
             </thead>
-            <tbody>
-            <tr th:each = "app:${listApp}">
-                <th scope="row" th:text="${app.id}"></th>
+            <tbody th:with="my = ${i.get()}">
+            <tr th:each = "app:${listApp}" th:with="my = ${i.incrementAndGet()}">
+                <th scope="row" th:text="${i}"></th>
                 <td th:text="${app.quantite}"></td>
                 <td th:text="${app.dateApp}"></td>
                 <td th:text="${app.produit.libelle}"></td>

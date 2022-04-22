@@ -20,9 +20,9 @@
                 <th scope="col"></th>
             </tr>
             </thead>
-            <tbody>
-            <tr th:each = "category:${listCategories}">
-                <th scope="row" th:text="${category.id}"></th>
+            <tbody th:with="my = ${i.get()}">
+            <tr th:each = "category:${listCategories}" th:with="my = ${i.incrementAndGet()}">
+                <th scope="row" th:text="${i}"></th>
                 <td th:text="${category.designation}"></td>
                 <td>
                     <a th:href="@{/category/edit/{id}(id=${category.id})}" class="btn btn-outline-warning">Edit</a>

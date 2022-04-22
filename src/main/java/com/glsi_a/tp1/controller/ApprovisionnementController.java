@@ -1,6 +1,7 @@
 package com.glsi_a.tp1.controller;
 
 import com.glsi_a.tp1.models.Approvisionnement;
+import com.glsi_a.tp1.models.Counter;
 import com.glsi_a.tp1.service.ApprovisionnementService;
 import com.glsi_a.tp1.service.ProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,8 @@ public class ApprovisionnementController {
 
     @GetMapping("/show")
     public String afficherApp(Model model) {
-        model.addAttribute("listApp", approvisionnementService.showAllApprovisionnement());
+        model.addAttribute("listApp", approvisionnementService.showAllApprovisionnement());;
+        model.addAttribute("i", new Counter());
         return "approvisionnement/showApprovisionnement";
     }
 

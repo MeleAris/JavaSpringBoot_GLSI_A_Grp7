@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="html_head">
+<head th:fragment="html_head (type)" th:remove="${type}">
     <meta charset="UTF-8">
     <title>[[${pageTitle}]]</title>
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">

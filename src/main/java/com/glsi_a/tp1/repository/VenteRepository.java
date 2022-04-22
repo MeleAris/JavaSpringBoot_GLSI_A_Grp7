@@ -21,4 +21,6 @@ public interface VenteRepository extends JpaRepository<Vente, Integer > {
     @Transactional
     void majmontantVente(@Param("i") int idv, @Param("j") double mnt);
 
+    @Query(value = "select count(v) from Vente v")
+    long countVente();
 }

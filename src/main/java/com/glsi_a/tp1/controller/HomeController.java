@@ -31,4 +31,8 @@ public class HomeController {
         model.addAttribute("nbvente", venteService.countVente());
         return "Home";
     }
+    @GetMapping("/login")
+    public String afficherLogin(){
+        return "Login";
+    }
 }

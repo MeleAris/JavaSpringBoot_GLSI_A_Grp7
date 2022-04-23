@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/assets/dist/css/bootstrap.min.css}" rel="stylesheet">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
+
 </head>
 <body>
-
+    <div class="container" style="box-shadow:0px 0px 10px 0px; width:600px; height:400px; position:center; padding:20px; margin:auto; margin-top:190px; display:flex; flex-direction:row">
+        <div>
+            <img src="image/login.png" class="rounded float-start" >
+        </div>
+        <form>
+            <h2>
+                <strong>
+                    Connexion
+                </strong>
+            </h2>
+            <div class="row mb-3">
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="Mot de passe">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-10 offset-sm-2">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                        <label class="form-check-label" for="gridCheck1">
+                            Example checkbox
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </form>
+    </div>
 </body>
 </html>

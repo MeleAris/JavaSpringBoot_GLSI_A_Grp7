@@ -1,12 +1,10 @@
 package com.glsi_a.tp1.controller;
 
-import com.glsi_a.tp1.models.Counter;
 import com.glsi_a.tp1.models.ProduitVente;
 import com.glsi_a.tp1.models.Vente;
 import com.glsi_a.tp1.service.ProduitVenteService;
 import com.glsi_a.tp1.service.VenteService;
 import com.glsi_a.tp1.service.ProduitService;
-import com.glsi_a.tp1.service.VenteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,8 +27,7 @@ public class VenteController {
     @GetMapping("/show")
     public String afficherVente(Model model)
     {
-        model.addAttribute("listVente", venteService.showAllVente());;
-        model.addAttribute("i", new Counter());
+        model.addAttribute("listVente", venteService.showAllVente());
         return "vente/showVente";
     }
 

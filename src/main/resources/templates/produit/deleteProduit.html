@@ -11,6 +11,7 @@
 <div class="row">
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="container col-6 mb-5">
+            <h2><strong>Formulaire de suppression d'un produit</strong></h2>
             <h3>Etes vous sûr de supprimer cet article?</h3>
             <form th:action="@{/produit/delete/{id}(id=${id})}" th:object="${leProduit}" method="post">
                 <div class="mb-3">

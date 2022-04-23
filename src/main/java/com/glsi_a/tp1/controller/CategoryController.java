@@ -1,16 +1,11 @@
 package com.glsi_a.tp1.controller;
 
 import com.glsi_a.tp1.models.Category;
-import com.glsi_a.tp1.models.Counter;
-import com.glsi_a.tp1.models.Produit;
-import com.glsi_a.tp1.repository.CategoryRepository;
 import com.glsi_a.tp1.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
 
 @Controller
 @RequestMapping("/category")
@@ -22,8 +17,7 @@ public class CategoryController {
     @GetMapping("/show")
     private String showCategories(Model model)
     {
-        model.addAttribute("listCategories",categoryService.showAllCategory());;
-        model.addAttribute("i", new Counter());
+        model.addAttribute("listCategories",categoryService.showAllCategory());
         return "category/showCategory";
     }
 

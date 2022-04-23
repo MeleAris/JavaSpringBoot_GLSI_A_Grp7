@@ -18,17 +18,18 @@
                     <option value="">Choisissez un article</option>
                     <option th:each="produit:${listProduit}"
                             th:value="${produit.id}"
-                            th:text="${produit.libelle}">
+                            th:text="${produit.libelle}"
+                            id="prd">
                     </option>
                 </select>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Quantité</label>
-                <input type="number" class="form-control" placeholder="Quantité" name="quantite" required>
+                <div class="mb-3">
+                    <label class="form-label">Quantité</label>
+                    <input type="number" th:min="0" class="form-control" placeholder="Quantité" name="quantite" required>
+                </div>
             </div>
             <button type="submit" class="btn btn-outline-secondary mb-2">Continuer</button>
+            <a th:href="@{/vente/savet}" class="btn btn-outline-primary mb-2">Terminer</a>
         </form>
-        <a th:href="@{/vente/savet/{id}/{qte} (id=${produit.id}, qte=${quantite})}" class="btn btn-outline-primary mb-2">Terminer</a>
     </main>
 </div>
 
@@ -43,3 +44,17 @@
 </script><script th:src="@{/css/dashboard.js}"></script>
 </body>
 </html>
+
+<!--<div class="row" th:each="produit:${listProduit}">
+    <div class="col-3">
+        <label class="form-label">Article</label>
+        <input th:value="${produit.libelle}" th:readonly="true" th:id="${produit.id}" type="text" class="form-control">
+    </div>
+    <div class="mb-3 col-3">
+        <label class="form-label">Quantité</label>
+        <input type="number" th:min="0" class="form-control" placeholder="Quantité" name="quantite" th:id="${produit.id}"  required>
+    </div>
+    <div class="col-6">
+        <input type="hidden" value="toto">
+    </div>
+</div>-->

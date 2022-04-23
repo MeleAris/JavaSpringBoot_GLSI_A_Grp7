@@ -51,4 +51,5 @@ public class ProduitVenteService {
             throw new RuntimeException("Impossible de supprimer cet élément");
         }
     }
+
 }

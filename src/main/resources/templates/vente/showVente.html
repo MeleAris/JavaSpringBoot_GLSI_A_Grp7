@@ -18,19 +18,29 @@
                 <th scope="col">#</th>
                 <th scope="col">Date de vente</th>
                 <th scope="col">Prix Total</th>
+                <th scope="col">Produits vendus</th>
                 <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each = "app, key:${listVente}">
-                <th scope="row" th:text="${key.index + 1}"></th>
-                <td th:text="${app.dateVente}"></td>
-                <td th:text="${app.prixTotal}"></td>
-                <td>
-                    <a th:href="@{/vente/edit/{id}(id=${app.id})}" class="btn btn-outline-warning mb-2">Edit</a>
-                    <a th:href="@{/vente/delete/{id}(id=${app.id})}" class="btn btn-outline-danger mb-2">Delete</a>
-                </td>
-            </tr>
+                <tr th:each = "app, key:${listVente}">
+                    <th scope="row" th:text="${key.index + 1}"></th>
+                    <td th:text="${app.dateVente}"></td>
+                    <td th:text="${app.prixTotal}"></td>
+                    <td>
+                        <table>
+                            <tr th:each="prd:${list}" th:if="${app.id == prd.vente.id}">
+                                <td th:text="${prd.produit.libelle}"></td>
+                                <td><strong>&nbsp; x &nbsp;</strong></td>
+                                <td th:text="${prd.quantite}"></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <a th:href="@{/vente/edit/{id}(id=${app.id})}" class="btn btn-outline-warning mb-2">Edit</a>
+                        <a th:href="@{/vente/delete/{id}(id=${app.id})}" class="btn btn-outline-danger mb-2">Delete</a>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </main>

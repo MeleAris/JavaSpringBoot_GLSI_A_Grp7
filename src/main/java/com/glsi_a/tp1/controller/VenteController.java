@@ -1,7 +1,9 @@
 package com.glsi_a.tp1.controller;
 
+import com.glsi_a.tp1.models.Produit;
 import com.glsi_a.tp1.models.ProduitVente;
 import com.glsi_a.tp1.models.Vente;
+import com.glsi_a.tp1.models.form;
 import com.glsi_a.tp1.service.ProduitVenteService;
 import com.glsi_a.tp1.service.VenteService;
 import com.glsi_a.tp1.service.ProduitService;
@@ -16,7 +18,7 @@ import java.time.LocalDate;
 @RequestMapping("/vente")
 public class VenteController {
 
-    private static int vid;
+    private int vid;
     @Autowired
     private ProduitService produitService;
     @Autowired
@@ -28,6 +30,7 @@ public class VenteController {
     public String afficherVente(Model model)
     {
         model.addAttribute("listVente", venteService.showAllVente());
+        model.addAttribute("list", service.showAll());
         return "vente/showVente";
     }
 
@@ -87,19 +90,18 @@ public class VenteController {
     }
 
     //Clique direct sur terminer
-    @GetMapping("/savet/{id}/{qte}")
-    public String saveterm(@PathVariable("id") int id, @PathVariable("qte") int qte)
+    @GetMapping("/savet/{id}")
+    public String saveterm(@PathVariable int id, @ModelAttribute form f)
     {
         ProduitVente pv = new ProduitVente();
-        pv.setProduit(produitService.selectedProduit(id));
-        pv.setQuantite(qte);
+        pv.setProduit(produitService.selectedProduit(id + 1));
+        pv.setQuantite(f.getQuantite());
 
         Vente vente = new Vente();
         vente.setDateVente(LocalDate.now());
         vente.setPrixTotal(venteService.montantVente(vente.getId()));
         venteService.saveVente(vente);
 
-        vid = vente.getId();
         pv.setVente(vente);
         service.save(pv);
         produitService.majQteProduitVente(pv.getProduit().getId(), pv.getQuantite());
@@ -125,6 +127,29 @@ public class VenteController {
     {
         venteService.deleteVente(id);
         return "redirect:/vente/show";
+    }
+
+    @PostMapping("/saves")
+    public String saves(ProduitVente pv, @ModelAttribute("vendre") ProduitVente p)
+    {
+        /*Vente ventes = new Vente();
+        ventes.setDateVente(LocalDate.now());
+        ventes.setPrixTotal(0);
+        venteService.saveVente(ventes);
+
+        vid = ventes.getId();
+        pv.setVente(ventes);
+        service.save(pv);
+        produitService.majQteProduitVente(pv.getProduit().getId(), pv.getQuantite());*/
+
+        Vente v = new Vente();
+        v.setDateVente(LocalDate.now());
+        //Calcul du prix total
+
+        pv.setVente(v);
+        venteService.saveVente(v);
+
+        return "redirect:/vente/created";
     }
 }
 

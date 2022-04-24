@@ -1,4 +1,4 @@
-package com.glsi_a.tp1.models;
+package com.glsi_a.tp1.secuConfig;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +18,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .inMemoryAuthentication()
                 .withUser("admin").password(passwordEncoder().encode("admin1234")).roles("admin")
                 .and()
-                .withUser("jackk").password(passwordEncoder().encode("12345")).roles("user");
+                .withUser("jackk").password(passwordEncoder().encode("12345")).roles("user")
+                .and()
+                .withUser("aris").password(passwordEncoder().encode("mel")).roles("user");
     }
 
     @Override

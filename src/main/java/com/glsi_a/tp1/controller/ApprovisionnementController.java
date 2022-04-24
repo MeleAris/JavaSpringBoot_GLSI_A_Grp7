@@ -38,6 +38,7 @@ public class ApprovisionnementController {
     {
         approvisionnement.setDateApp(LocalDate.now());
         approvisionnementService.saveApprovisionnement(approvisionnement);
+        produitService.majQteProduit(approvisionnement.getProduitId(), approvisionnement.getQuantite());
         return "redirect:/approvisionnement/show";
     }
 

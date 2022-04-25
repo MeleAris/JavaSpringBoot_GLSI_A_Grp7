@@ -58,6 +58,9 @@ public class VenteService {
     //Compter produits en rupture de stock
     public void majmontantVente(int idv){ venteRepository.majmontantVente(idv, montantVente(idv));}
 
-    public long countVente(){ return venteRepository.countVente();}
+    public long countVente(int mois){ return venteRepository.countVente(mois);}
+
+    public List<Integer> stats(int annee){return venteRepository.stats(annee);}
+    public List<Integer> mois(int annee){return venteRepository.mois(annee);}
 }
 

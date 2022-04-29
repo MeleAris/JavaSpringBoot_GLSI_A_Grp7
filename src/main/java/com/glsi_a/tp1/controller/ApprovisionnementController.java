@@ -24,6 +24,11 @@ public class ApprovisionnementController {
         model.addAttribute("listApp", approvisionnementService.showAllApprovisionnement());
         return "approvisionnement/showApprovisionnement";
     }
+    @PostMapping("/filtre")
+    public String dateApp(Filtre filtre ,Model model) {
+        model.addAttribute("listApp", approvisionnementService.showAllFiltre(filtre.date1,filtre.date2));
+        return "approvisionnement/showApprovisionnement";
+    }
 
     @GetMapping("/create")
     public String afficherFormulaire(Model model) {
@@ -67,5 +72,10 @@ public class ApprovisionnementController {
     public String appProduit(@PathVariable("id") int id, Model model) {
         model.addAttribute("leProduit", produitService.selectedProduit(id));
         return "approvisionnement/formApprovisionnementProduit";
+    }
+
+    class Filtre {
+        private LocalDate date1;
+        private LocalDate date2;
     }
 }

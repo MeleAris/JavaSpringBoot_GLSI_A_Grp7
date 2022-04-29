@@ -27,6 +27,13 @@ public class ApprovisionnementService {
         return approvisionnementRepository.findAll();
     }
 
+
+    //Affichage de tous les produits
+    public List<Approvisionnement> showAllFiltre(LocalDate d,LocalDate f)
+    {
+        return approvisionnementRepository.filtreApprov(d,f);
+    }
+
     //Selection d'un seul produit
     public Approvisionnement selectedApprovisionnement(int id)
     {

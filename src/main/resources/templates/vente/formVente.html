@@ -4,44 +4,64 @@
 <head th:replace="fragments::html_head" />
 
 <body>
-<div th:replace="fragments::header"/>
 
-<div th:replace="fragments::menu"/>
-
-<div class="row">
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <h2><strong>Formulaire de saisie de la vente</strong></h2>
-        <form th:action="@{/vente/save}" method="post">
-            <div>
-                <label class="form-label">Article</label>
-                <select name="produit" required>
-                    <option value="">Choisissez un article</option>
-                    <option th:each="produit:${listProduit}"
-                            th:value="${produit.id}"
-                            th:text="${produit.libelle}"
-                            id="prd">
-                    </option>
-                </select>
-                <div class="mb-3">
-                    <label class="form-label">Quantité</label>
-                    <input type="number" th:min="0" class="form-control" placeholder="Quantité" name="quantite" required>
+    <div id="app">
+        <div th:replace="fragments::menu"/>
+        <div id="main">
+            <section id="basic-horizontal-layouts">
+                <div class="row match-height">
+                    <div class="col-md-12 col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Enregistrer une nouvelle vente</h4>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <form class="form form-horizontal" th:action="@{/vente/save}" method="post">
+                                        <div class="form-body">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label>Articles</label>
+                                                </div>
+                                                <div class="col-md-8 form-group">
+                                                    <select name="produit" id="first-name" class="form-control" required>
+                                                        <option value="">Choisissez un article</option>
+                                                        <option th:each="produit:${listProduit}"
+                                                                th:value="${produit.id}"
+                                                                th:text="${produit.libelle}"
+                                                                id="prd">
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>Quantité</label>
+                                                </div>
+                                                <div class="col-md-8 form-group">
+                                                    <input type="number" th:min="0" class="form-control" id="email-id" placeholder="Quantité" name="quantite" required>
+                                                </div>
+                                                <div class="col-sm-12 d-flex justify-content-end">
+                                                    <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                                    <button type="reset"
+                                                            class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                                    <a th:href="@{/vente/savet}"
+                                                       class="btn btn-light-secondary me-1 mb-1">Terminer</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <button type="submit" class="btn btn-outline-secondary mb-2">Continuer</button>
-            <a th:href="@{/vente/savet}" class="btn btn-outline-primary mb-2">Terminer</a>
-        </form>
-    </main>
-</div>
+            </section>
+        </div>
+    </div>
 
-<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
-<script th:src="@{/assets/dist/js/bootstrap.bundle.min.js}"/>
-<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
-        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
-        integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
-        crossorigin="anonymous">
-</script><script th:src="@{/css/dashboard.js}"></script>
+    <script th:src="@{/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+    <script th:src="@{/assets/js/bootstrap.bundle.min.js}"></script>
+
+    <script th:src="@{/assets/js/mazer.js}"></script>
 </body>
 </html>
 

@@ -21,26 +21,32 @@
                                         <div class="form-body">
                                             <div class="row">
                                                 <div class="col-md-4">
+                                                    <label>Catégorie</label>
+                                                </div>
+                                                <div class="col-md-8 form-group">
+                                                    <input type="text" th:field="*{category.designation}" readonly class="form-control"
+                                                           placeholder="Catégorie du produit">
+                                                </div>
+                                                <div class="col-md-4">
                                                     <label>Libellé</label>
                                                 </div>
                                                 <div class="col-md-8 form-group">
                                                     <input type="text" th:field="*{libelle}" class="form-control"
-                                                           placeholder="Libellé du produit">
+                                                           placeholder="Libellé du produit" readonly>
                                                 </div>
-
                                                 <div class="col-md-4">
                                                     <label>Quantité seuille</label>
                                                 </div>
                                                 <div class="col-md-8 form-group">
                                                     <input type="text" th:field="*{qteSeuil}" class="form-control"
-                                                           placeholder="Quantité seuille">
+                                                           placeholder="Quantité seuille" readonly>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>Prix</label>
                                                 </div>
                                                 <div class="col-md-8 form-group">
                                                     <input type="text"  th:field="*{prix}" class="form-control"
-                                                           placeholder="Prix du produit">
+                                                           placeholder="Prix du produit" readonly>
                                                 </div>
                                                 <div class="col-md-8 form-group">
                                                     <input type="hidden" th:field="*{id}" class="form-control">
@@ -52,8 +58,7 @@
                                                 </div>
                                                 <div class="col-sm-12 d-flex justify-content-end">
                                                     <button type="submit" class="btn btn-primary me-1 mb-1">Valider</button>
-                                                    <button type="reset"
-                                                            class="btn btn-light-secondary me-1 mb-1">Annuler</button>
+                                                    <a th:href="@{/produit/show}" class="btn btn-secondary">Retour</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -66,45 +71,6 @@
             </section>
         </div>
     </div>
-
-<div class="row">
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <div class="container col-6 mb-5">
-            <h2><strong>Formulaire de </strong></h2>
-            <form  method="post">
-                <div class="mb-3">
-                    <input type="number" th:field="*{id}" class="form-control" name="id" hidden>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Libelle</label>
-                    <input type="text" th:field="*{libelle}" class="form-control" name="libelle" readonly>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Quantité seuil</label>
-                    <input type="number" th:field="*{qteSeuil}" class="form-control" name="qteSeuil" readonly>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Prix</label>
-                    <input type="number" th:field="*{prix}" class="form-control" readonly>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Date de création</label>
-                    <input type="text" th:field="*{dateCreation}" class="form-control" readonly>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Quantité en stock</label>
-                    <input type="number" th:field="*{qteStock}" class="form-control" readonly>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Catégorie du produit</label>
-                    <input type="text" th:field="*{category.designation}" class="form-control" readonly>
-                </div>
-                <button type="submit" class="btn btn-outline-primary">Supprimer</button>
-                <a th:href="@{/produit/show}" class="btn btn-outline-secondary">Retour</a>
-            </form>
-        </div>
-    </main>
-</div>
 
 <script th:src="@{/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
 <script th:src="@{/assets/js/bootstrap.bundle.min.js}"></script>

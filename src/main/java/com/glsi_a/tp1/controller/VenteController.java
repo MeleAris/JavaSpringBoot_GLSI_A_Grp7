@@ -1,4 +1,4 @@
-package com.glsi_a.tp1.models.controller;
+package com.glsi_a.tp1.controller;
 
 import com.glsi_a.tp1.models.Produit;
 import com.glsi_a.tp1.models.ProduitVente;

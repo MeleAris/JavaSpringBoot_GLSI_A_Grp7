@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -32,4 +33,11 @@ public interface VenteRepository extends JpaRepository<Vente, Integer > {
     @Query(value = "select month(v.date_vente) from vente v where year(v.date_vente) = :an " +
             "group by month(v.date_vente) ORDER by month(v.date_vente) asc", nativeQuery = true)
     List<Integer> mois(@Param("an") int annee);
+
+    @Query(value = "select v from Vente v where v.dateVente > :dt1 and v.dateVente < :dt2")
+    List<Vente> statVente(@Param("dt1") LocalDate date1, @Param("dt2") LocalDate date2);
+
+    @Query(value = "select sum(v.vente.prixTotal) from ProduitVente v where v.vente.dateVente > :dt1 " +
+            "and v.vente.dateVente < :dt2 ")
+    long mntTotal(@Param("dt1") LocalDate date1, @Param("dt2") LocalDate date2);
 }

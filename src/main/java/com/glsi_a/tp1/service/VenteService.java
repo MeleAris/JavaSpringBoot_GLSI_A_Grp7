@@ -5,6 +5,7 @@ import com.glsi_a.tp1.repository.VenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,5 +63,9 @@ public class VenteService {
 
     public List<Integer> stats(int annee){return venteRepository.stats(annee);}
     public List<Integer> mois(int annee){return venteRepository.mois(annee);}
+
+    public List<Vente> statVente(LocalDate dat1, LocalDate dat2){return venteRepository.statVente(dat1, dat2);}
+
+    public long mntTotal(LocalDate dat1, LocalDate dat2){return venteRepository.mntTotal(dat1, dat2);}
 }
 

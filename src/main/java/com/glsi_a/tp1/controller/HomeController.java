@@ -31,6 +31,7 @@ public class HomeController {
         int id;
         List<Integer> vente = venteService.stats(an);
         List<Integer> mois = venteService.mois(an);
+
         List<String> myList = Arrays.asList("Jan", "Fév", "Mars", "Avr", "Mai", "Juin", "Jui", "Août", "Sep", "Oct", "Nov", "Déc");
         List<String> map = new ArrayList<>();
         for (int i = 0; i <mois.stream().count(); i++)
@@ -41,6 +42,7 @@ public class HomeController {
         model.addAttribute("annee", an);
         model.addAttribute("vente", vente);
         model.addAttribute("mois", map);
+
         model.addAttribute("nbStock", produitService.countProduit());
         model.addAttribute("nbRupture", produitService.countProduitRupture());
         model.addAttribute("nbvente", venteService.countVente(month));

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments::html_head"/>
+<body>
+<div id="app">
+    <div th:replace="fragments::menu"/>
+
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+
+        <div class="page-heading">
+            <h3>Dashboard</h3>
+        </div>
+        <div class="page-content">
+            <section class="section">
+                <div class="row" id="table-striped">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title"><strong>Liste d'articles vendus</strong></h4>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <a th:href="@{/vente/create/}" class="btn btn-outline-success mb-2">Enregistrer une nouvelle vente</a>
+                                </div>
+                                <!-- table striped -->
+                                <div class="table-responsive">
+                                    <table class="table table-striped mb-0">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Date de vente</th>
+                                            <th>Prix Total</th>
+                                            <th>Produits vendus</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each = "app, key:${list}">
+                                            <th scope="row" th:text="${key.index + 1}"></th>
+                                            <td th:text="${app.dateVente}"></td>
+                                            <td th:text="${app.prixTotal}"></td>
+                                            <td>
+                                                <table>
+                                                    <tr th:each="prd:${list}" th:if="${app.id == prd.vente.id}">
+                                                        <td th:text="${prd.produit.libelle}"></td>
+                                                        <td><strong>&nbsp; x &nbsp;</strong></td>
+                                                        <td th:text="${prd.quantite}"></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td>
+                                                <a th:href="@{/vente/edit/{id}(id=${app.id})}" class="btn btn-outline-primary mb-2">Edit</a>
+                                                <a th:href="@{/vente/delete/{id}(id=${app.id})}" class="btn btn-outline-danger mb-2">Delete</a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start">
+                    <p>2021 &copy; Ar</p>
+                </div>
+                <div class="float-end">
+                    <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
+                            href="http://ahmadsaugi.com">MKA</a></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+<script th:src="@{/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+<script th:src="@{/assets/js/bootstrap.bundle.min.js}"></script>
+
+<script th:src="@{/assets/vendors/apexcharts/apexcharts.js}"></script>
+<script th:src="@{/assets/js/pages/dashboard.js}"></script>
+
+<script th:src="@{/assets/js/mazer.js}"></script>
+</body>
+</html>

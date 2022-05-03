@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments::html_head" />
-
+<head th:replace="fragments::html_head"/>
 <body>
 <div id="app">
     <div th:replace="fragments::menu"/>
+
     <div id="main">
         <section id="basic-horizontal-layouts">
             <div class="row match-height">
                 <div class="col-md-12 col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Modification de la catégorie</h4>
+                            <h4 class="card-title">Saisissez les dates</h4>
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form form-horizontal" th:action="@{/category/edit}" th:object="${uneCategory}" method="post">
+                                <form class="form form-horizontal" th:action="@{/vente/stat12}" method="post">
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label>Désignation</label>
+                                                <label>1- Date limite</label>
                                             </div>
                                             <div class="col-md-8 form-group">
-                                                <input type="text" th:field="*{designation}" class="form-control"
-                                                       placeholder="Désignation">
+                                                <input type="date" class="form-control" placeholder="Quantité" name="date1" required>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>2- Date limite</label>
                                             </div>
                                             <div class="col-md-8 form-group">
-                                                <input type="hidden" th:field="*{id}" class="form-control">
+                                                <input type="date" class="form-control" placeholder="Quantité" name="date2" required>
                                             </div>
                                             <div class="col-sm-12 d-flex justify-content-end">
                                                 <button type="submit" class="btn btn-primary me-1 mb-1">Valider</button>
-                                                <button type="reset"
-                                                        class="btn btn-light-secondary me-1 mb-1">Annuler</button>
                                             </div>
                                         </div>
                                     </div>
@@ -45,10 +45,5 @@
         </section>
     </div>
 </div>
-
-<script th:src="@{/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
-<script th:src="@{/assets/js/bootstrap.bundle.min.js}"></script>
-
-<script th:src="@{/assets/js/mazer.js}"></script>
 </body>
 </html>

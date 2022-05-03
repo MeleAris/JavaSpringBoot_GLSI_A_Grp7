@@ -37,4 +37,5 @@ public interface ProduitRepository extends JpaRepository<Produit, Integer > {
     @Query(value = "UPDATE produits set qte_stock = qte_stock - :q where id = :i", nativeQuery = true)
     @Transactional
     void majProduitVente(@Param("i") int id,@Param("q") int quantite);
+
 }

@@ -1,9 +1,6 @@
 package com.glsi_a.tp1.controller;
 
-import com.glsi_a.tp1.models.Produit;
-import com.glsi_a.tp1.models.ProduitVente;
-import com.glsi_a.tp1.models.Vente;
-import com.glsi_a.tp1.models.form;
+import com.glsi_a.tp1.models.*;
 import com.glsi_a.tp1.service.ProduitVenteService;
 import com.glsi_a.tp1.service.VenteService;
 import com.glsi_a.tp1.service.ProduitService;
@@ -69,6 +66,7 @@ public class VenteController {
     public String savefinal(ProduitVente pv)
     {
         pv.setVente(venteService.selectedVente(vid));
+        venteService.majmontantVente(pv.getVente().getId());
         service.save(pv);
         produitService.majQteProduitVente(pv.getProduit().getId(), pv.getQuantite());
         return "redirect:/vente/created";
@@ -151,5 +149,20 @@ public class VenteController {
 
         return "redirect:/vente/created";
     }
+
+    @GetMapping("/stat1")
+    public String statistiques(Model model, @ModelAttribute dateform d)
+    {
+        model.addAttribute("list", venteService.statVente(d.getDate1(), d.getDate2()));
+        model.addAttribute("prd", service.showAll());
+        return "vente/affDate";
+    }
+
+    @PostMapping("/stat12")
+    public String statistique(@ModelAttribute("dates") dateform d)
+    {
+        return "vente/showVente";
+    }
+
 }
 
